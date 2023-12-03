@@ -179,3 +179,4 @@ secondCodeBreaker([
   "sevensevenkpbggfhrhk121",
 ]);
 secondCodeBreaker(data);
+secondCodeBreaker(["twooneight"])
