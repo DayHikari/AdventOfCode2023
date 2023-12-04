@@ -55,7 +55,16 @@ function gearFinder(dataSet) {
       const aboveNumbers = aboveNumberArray !== null && aboveNumberArray[0];
       const aboveNumberStartIndex = aboveNumberArray !== null && aboveNumberArray.index;
       // console.log(aboveNumbers, aboveNumberStartIndex, gearIndex, index)
-      let aboveFullNumber;
+      const fullNumbersArray = [];
+      console.log(aboveNumberStartIndex, aboveNumbers)
+      if(aboveNumbers) {
+        aboveNumbers.length === 3 && fullNumbersArray.push(Number(aboveNumbers));
+        aboveNumbers.length === 2 && aboveNumberStartIndex === 0 && dataSet[index - 1][gearIndex - 2].match(/[0-9]/) !== null && fullNumbersArray.push(Number(dataSet[index - 1].slice(gearIndex -2, gearIndex + 1)));
+        aboveNumbers.length === 2 && aboveNumberStartIndex === 0 && dataSet[index - 1][gearIndex - 2].match(/[0-9]/) === null && fullNumbersArray.push(Number(dataSet[index - 1].slice(gearIndex -1, gearIndex + 1)));
+        aboveNumbers.length === 2 && aboveNumberStartIndex === 1 && dataSet[index - 1][gearIndex + 2].match(/[0-9]/) !== null && fullNumbersArray.push(Number(dataSet[index - 1].slice(gearIndex, gearIndex + 3)));
+        aboveNumbers.length === 2 && aboveNumberStartIndex === 1 && dataSet[index - 1][gearIndex + 2].match(/[0-9]/) === null && fullNumbersArray.push(Number(dataSet[index - 1].slice(gearIndex, gearIndex + 2)));
+      }
+      console.log(fullNumbersArray)
       
       //  if(aboveNumbers) {
       //   if(aboveNumbers.length === 1) {
