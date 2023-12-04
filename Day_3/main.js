@@ -43,14 +43,31 @@ function gearFinder(dataSet) {
     // console.log(gearsIndex);
     gearsIndex.map(gearIndex => {
       const prevCharacter = elem[gearIndex - 1].match(/[0-9]/) && elem[gearIndex - 1];
-      prevCharacter !== null && console.log(prevCharacter);
+      // prevCharacter !== null && console.log(prevCharacter);
 
       const nextCharacter = elem[gearIndex + 1].match(/[0-9]/) && elem[gearIndex - 1];
-      nextCharacter !== null && console.log(nextCharacter);
+      // nextCharacter !== null && console.log(nextCharacter);
 
       const aboveCharacters = dataSet[index - 1] && dataSet[index - 1].slice(gearIndex -1, gearIndex + 2)
       // console.log(dataSet[index - 1] && dataSet[index - 1][gearIndex].match(/[0-9]/))
-      aboveCharacters !== null && console.log(aboveCharacters)
+      // aboveCharacters !== undefined && console.log(aboveCharacters)
+      const aboveNumberArray = aboveCharacters !== undefined && aboveCharacters.match(/[0-9]+/);
+      const aboveNumbers = aboveNumberArray !== null && aboveNumberArray[0];
+      const aboveNumberStartIndex = aboveNumberArray !== null && aboveNumberArray.index;
+      // console.log(aboveNumbers, aboveNumberStartIndex, gearIndex, index)
+      let aboveFullNumber;
+      
+      //  if(aboveNumbers) {
+      //   if(aboveNumbers.length === 1) {
+      //     if(aboveNumberStartIndex === 0) {
+      //       // console.log(aboveNumbers, aboveNumberStartIndex);
+      //       for(let i = gearIndex - 1; i >= gearIndex - 3; i--) {
+      //         console.log(dataSet[index -1][i], gearIndex)
+      //       }
+      //     }
+
+      //   }
+      //  }
     })
     // loop forward and back from the index and find any values that regex 0-9 and add together to make the number
     // Again, above and below, find if a number is present and then loop again
