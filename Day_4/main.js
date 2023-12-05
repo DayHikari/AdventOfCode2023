@@ -26,7 +26,7 @@ const secondData = [
   "Card 204: 82 64 58 18 73 13  2 71 24 49 |  9 61 47 31  5 89 78 99 40 54 23 68 38 95 69 84 53 27 45 33 87 90 93 44 60",
 ];
 
-
+// // Part 2
 function winningFinder(card, index, dataSet) {
     const winningNumbersArray = [];
 
@@ -92,98 +92,63 @@ function cardFinder(dataSet) {
 }
 
 // cardFinder(smallData);
-cardFinder(data);
 // cardFinder(secondData);
 
-// ----------- Removed functionaility
-
-// const winningNumbersArray = [];
-
-// const allNumbers = card.split(":")[1];
-// // console.log(index, "card numbers:", allNumbers)
-
-// const winNumbers = allNumbers
-//   .split("|")[0]
-//   .trim()
-//   .split(" ")
-//   .filter((e) => -e);
-// // console.log("Win numbers", winNumbers)
-
-// const ourNumbers = allNumbers
-//   .split("|")[1]
-//   .trim()
-//   .split(" ")
-//   .filter((e) => -e);
-// // console.log("Our numbers", ourNumbers)
-
-// winNumbers.map((win, i) => {
-//   ourNumbers.map((our) => {
-//     !winningNumbersArray.includes(i) && win === our && winningNumbersArray.push(i)
-//   });
-// });
-// console.log("Winning numbers", winningNumbersArray)
-// // console.log("number of wins length", winningNumbersArray.length)
-
-// const cardsWonIndexArray = [];
-
-// for(let i = 1; i <= winningNumbersArray.length; i++) {
-//     index + i < dataSet.length && cardsWonIndexArray.push(index + i);
-// };
-// console.log("Current card: ", index, "Cards won: ", cardsWonIndexArray, "Number of cards", dataSet.length - 1)
-// console.log("Number of cards won", cardsWonIndexArray.length)
-// totalCardsArray.push(cardsWonIndexArray.length + 1)
-
-
-// -------
+// !!!!! Don't run below randomly!!!!!
+// !!!! It requires a lot of CPU XP !!!!
+// cardFinder(data);
+// !!!! Careful of above!!!!!
 
 
 
-// function winFinder(dataSet) {
-//     const pointsArray = [];
+
+// // Part 1
+function winFinder(dataSet) {
+    const pointsArray = [];
   
-//   //   console.log("dataSet:",dataSet)
+  //   console.log("dataSet:",dataSet)
   
-//     dataSet.map((card, index) => {
-//       const numberOfWins = [];
+    dataSet.map((card, index) => {
+      const numberOfWins = [];
   
-//       const allNumbers = card.split(":")[1];
-//       // console.log(index, "card numbers:", allNumbers)
+      const allNumbers = card.split(":")[1];
+      // console.log(index, "card numbers:", allNumbers)
   
-//       const winNumbers = allNumbers
-//         .split("|")[0]
-//         .trim()
-//         .split(" ")
-//         .filter((e) => -e);
-//       // console.log("Win numbers", winNumbers)
+      const winNumbers = allNumbers
+        .split("|")[0]
+        .trim()
+        .split(" ")
+        .filter((e) => -e);
+      // console.log("Win numbers", winNumbers)
   
-//       const ourNumbers = allNumbers
-//         .split("|")[1]
-//         .trim()
-//         .split(" ")
-//         .filter((e) => -e);
-//       // console.log("Our numbers", ourNumbers)
+      const ourNumbers = allNumbers
+        .split("|")[1]
+        .trim()
+        .split(" ")
+        .filter((e) => -e);
+      // console.log("Our numbers", ourNumbers)
   
-//       winNumbers.map((win, i) => {
-//         ourNumbers.map((our) => {
-//           !numberOfWins.includes(i) && win === our && numberOfWins.push(i)
-//         });
-//       });
-//       // console.log("Number of wins", numberOfWins)
-//       // console.log("number of wins length", numberOfWins.length)
+      winNumbers.map((win, i) => {
+        ourNumbers.map((our) => {
+          !numberOfWins.includes(i) && win === our && numberOfWins.push(i)
+        });
+      });
+      // console.log("Number of wins", numberOfWins)
+      // console.log("number of wins length", numberOfWins.length)
   
-//       let points = 0;
+      let points = 0;
   
-//       if (numberOfWins.length >= 1) {
-//           points++
-//         for (let i = 1; i < numberOfWins.length; i++) {
-//           points *= 2;
-//         }
-//       } else if (numberOfWins === 1) {
-//           points++
-//       }
-//       // console.log("points", points)
-//       pointsArray.push(points);
-//     });
-//     console.log(pointsArray.reduce((a, b) => a + b));
-//   //   console.log(pointsArray)
-//   }
+      if (numberOfWins.length >= 1) {
+          points++
+        for (let i = 1; i < numberOfWins.length; i++) {
+          points *= 2;
+        }
+      } else if (numberOfWins === 1) {
+          points++
+      }
+      // console.log("points", points)
+      pointsArray.push(points);
+    });
+    console.log(pointsArray.reduce((a, b) => a + b));
+  //   console.log(pointsArray)
+  }
