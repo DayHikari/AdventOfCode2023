@@ -61,6 +61,10 @@ function numberFinder(rangeArray, compArray) {
         const newUpperValue = upperCompValue;
         const newUpperRange = upperValue - upperCompValue;
         if(newRange.length > 0) {
+          newRange.map((newRanges, newRangesIndex) => {
+            newUpperValue - newUpperRange === newRanges[0] ? (newRange[newRangesIndex] = [newLowerValue, newLowerRange]) :
+            
+          })
           // need to do the comparison of the new upper range incase itr has already been changed
         }
 
