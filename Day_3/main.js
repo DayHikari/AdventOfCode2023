@@ -32,8 +32,6 @@ function gearFinder(dataSet) {
 
   // Map through the data set and push numbers to numberArray
   dataSet.map((elem, index) => {
-    // Find the numbers in the string
-    const gears = elem.match(/\*+/g);
     // console.log(gears);
     const splitArray = elem.split("");
     const gearsIndex = [];
@@ -45,8 +43,6 @@ function gearFinder(dataSet) {
       const fullNumbersArray = [];
       const prevCharacter =
         elem[gearIndex - 1].match(/[0-9]/) && elem[gearIndex - 1];
-      // prevCharacter !== null && fullNumbersArray.push(prevCharacter);
-      // prevCharacter !== null && console.log("prev character", prevCharacter, "prior characters", dataSet[index][gearIndex - 1])
       prevCharacter !== null &&
         dataSet[index][gearIndex - 3].match(/[0-9]/) !== null &&
         fullNumbersArray.push(
@@ -91,12 +87,8 @@ function gearFinder(dataSet) {
       const aboveCharacters =
         dataSet[index - 1] &&
         dataSet[index - 1].slice(gearIndex - 1, gearIndex + 2);
-      // aboveCharacters && console.log(gearIndex, "above characters: ", aboveCharacters)
-      // console.log(dataSet[index - 1] && dataSet[index - 1][gearIndex].match(/[0-9]/))
-      // aboveCharacters !== undefined && console.log(aboveCharacters)
       const aboveNumberArray =
         aboveCharacters !== undefined && aboveCharacters.match(/[0-9]+/g);
-      // aboveNumberArray && console.log(gearIndex, "above number array: ", aboveNumberArray)
 
       aboveNumberArray &&
         aboveNumberArray.map((e, i) => {
