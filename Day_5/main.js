@@ -38,18 +38,31 @@ function numberFinder(rangeArray, compArray) {
     log("Finder function range: ", range);
     //   log("Finder function comp array: ", compArray)
     const lowerValue = range[0];
-    const upperValue = range[0] + range[1];
+    const upperValue = range[0] + range[1] - 1;
       log("Finder function lower value: ", lowerValue)
       log("Finder function upper value: ", upperValue)
+
+      // const test = []
+      // for(let i = 0; i < range[1]; i++) {
+      //   test.push(lowerValue + i)
+      // }
+      // log("test", test)
 
     compArray.map(compRange => {
       const numberArray = compRange.split(" ").map((string) => Number(string));
       const lowerCompValue = numberArray[1];
-      const upperCompValue = numberArray[1] + numberArray[2];
+      const upperCompValue = numberArray[1] + numberArray[2] - 1;
       
       if(lowerValue > lowerCompValue && upperValue < upperCompValue) {
         newRange.push([(lowerValue - lowerCompValue + numberArray[0]), range[1]])
       } else if(lowerValue > lowerCompValue && lowerValue < upperCompValue && upperValue > upperCompValue) {
+        const newLowerValue = lowerValue - lowerCompValue + numberArray[0];
+        const newLowerRange = upperCompValue - lowerValue;
+        const newUpperValue = upperCompValue;
+        const newUpperRange = upperValue - upperCompValue;
+        if(newRange.length > 0) {
+          // need to do the comparison of the new upper range incase itr has already been changed
+        }
 
       }
       /* Going through the scenarios of what could occur with the range and creating new ranges to be pushed up to the newRangeArray*/
