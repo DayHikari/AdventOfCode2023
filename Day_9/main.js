@@ -5,7 +5,7 @@ const exampleData = ["0 3 6 9 12 15", "1 3 6 10 15 21", "10 13 16 21 30 45"];
 const log = console.log.bind(console);
 
 function difference(array) {
-    return array.map((value, index) => typeof(array[index + 1 ]) === "number" && (value > array[index + 1 ] ? value - array[index + 1 ] : array[index + 1 ] - value)).filter(elem => typeof(elem) === "number");
+    return array.map((value, index) => typeof(array[index + 1 ]) === "number" && (value - array[index + 1 ])).filter(elem => typeof(elem) === "number");
     // log("difference array: ", differenceArray)
 }
 
