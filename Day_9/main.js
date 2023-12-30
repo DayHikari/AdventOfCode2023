@@ -9,7 +9,7 @@ function difference(array) {
     // log("difference array: ", differenceArray)
 }
 
-function firstPart(data) {
+function secondPart(data) {
     const dataArray = data.map(elem => elem.split(" "));
     // log(dataArray);
     let total = 0;
@@ -17,27 +17,66 @@ function firstPart(data) {
     dataArray.map(singleData => {
         // reverse the single data
         const reversedArray = singleData.toReversed().map(elem => Number(elem));
-        const valueArray = [reversedArray[0]];
-        // log(reversedArray)
+        const valueArray = [reversedArray[reversedArray.length - 1]];
+        // log(reversedArray[reversedArray.length - 1], reversedArray[0])
         // map through the new reversed data
             // if the next index has a value, minus from current
         let differenceArray = difference(reversedArray)
-        valueArray.push(differenceArray[0]);
+        valueArray.push(differenceArray[differenceArray.length - 1]);
         let zeroArray = differenceArray.filter(value => value === 0);
+        log("difference:", differenceArray, "|  zero: ", zeroArray, "|  value: ", valueArray)
         // log("zero array: ", zeroArray)
         // push the new number to an array
         // if all values are 0 add them up to th enew value
         while (differenceArray.length !== zeroArray.length) {
             differenceArray = difference(differenceArray);
-            differenceArray[0] && valueArray.push(differenceArray[0]);
+            typeof(differenceArray[differenceArray.length - 1]) === "number" && valueArray.push(differenceArray[differenceArray.length - 1]);
             zeroArray = differenceArray.filter(value => value === 0);
             log("difference:", differenceArray, "|  zero: ", zeroArray)
+            log("value Array", valueArray)
         };
-        total += valueArray.reduce((a,b) => a + b);
-        // log("value Array", valueArray)
+        total += valueArray.reverse().reduce((a,b) => b - a);
+        log("value Array", valueArray)
     });
     log("Total: ", total);
 };
 
-firstPart(exampleData)
-firstPart(data)
+secondPart(exampleData)
+secondPart(data)
+
+
+// // Part 1
+// function difference(array) {
+//     return array.map((value, index) => typeof(array[index + 1 ]) === "number" && (value - array[index + 1 ])).filter(elem => typeof(elem) === "number");
+//     // log("difference array: ", differenceArray)
+// }
+
+// function firstPart(data) {
+//     const dataArray = data.map(elem => elem.split(" "));
+//     // log(dataArray);
+//     let total = 0;
+
+//     dataArray.map(singleData => {
+//         // reverse the single data
+//         const reversedArray = singleData.toReversed().map(elem => Number(elem));
+//         const valueArray = [reversedArray[0]];
+//         // log(reversedArray)
+//         // map through the new reversed data
+//             // if the next index has a value, minus from current
+//         let differenceArray = difference(reversedArray)
+//         valueArray.push(differenceArray[0]);
+//         let zeroArray = differenceArray.filter(value => value === 0);
+//         // log("zero array: ", zeroArray)
+//         // push the new number to an array
+//         // if all values are 0 add them up to th enew value
+//         while (differenceArray.length !== zeroArray.length) {
+//             differenceArray = difference(differenceArray);
+//             differenceArray[0] && valueArray.push(differenceArray[0]);
+//             zeroArray = differenceArray.filter(value => value === 0);
+//             log("difference:", differenceArray, "|  zero: ", zeroArray)
+//         };
+//         total += valueArray.reduce((a,b) => a + b);
+//         // log("value Array", valueArray)
+//     });
+//     log("Total: ", total);
+// };
